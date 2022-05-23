@@ -1,0 +1,18 @@
+name: Test Drive JS Custom Action
+
+on:
+  workflow_dispatch:
+
+jobs:
+  custom_js_action_job:
+    runs-on: ubuntu-latest
+    name: Custom js Action Demo
+    steps:
+      - name: First js action step
+        id: myjsaction
+        uses: dliu-repo/demojsaction@v1.0
+        with:
+          name-of-you: "World"
+          # Use the output from the `myjsaction` step
+      - name: Get the output message time
+        run: echo "The time was ${{ steps.myjsaction.outputs.time }}"
